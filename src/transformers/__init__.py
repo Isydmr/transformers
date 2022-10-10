@@ -390,6 +390,13 @@ _import_structure = {
         "WAVLM_PRETRAINED_CONFIG_ARCHIVE_MAP",
         "WavLMConfig",
     ],
+    "models.whisper": [
+        "WHISPER_PRETRAINED_CONFIG_ARCHIVE_MAP",
+        "WhisperConfig",
+        "WhisperFeatureExtractor",
+        "WhisperProcessor",
+        "WhisperTokenizer",
+    ],
     "models.x_clip": [
         "XCLIP_PRETRAINED_CONFIG_ARCHIVE_MAP",
         "XCLIPConfig",
@@ -435,6 +442,7 @@ _import_structure = {
         "VisualQuestionAnsweringPipeline",
         "ZeroShotClassificationPipeline",
         "ZeroShotImageClassificationPipeline",
+        "ZeroShotObjectDetectionPipeline",
         "pipeline",
     ],
     "processing_utils": ["ProcessorMixin"],
@@ -871,6 +879,7 @@ else:
             "MODEL_FOR_VISUAL_QUESTION_ANSWERING_MAPPING",
             "MODEL_MAPPING",
             "MODEL_WITH_LM_HEAD_MAPPING",
+            "MODEL_FOR_ZERO_SHOT_OBJECT_DETECTION_MAPPING",
             "AutoModel",
             "AutoModelForAudioClassification",
             "AutoModelForAudioFrameClassification",
@@ -898,6 +907,7 @@ else:
             "AutoModelForVision2Seq",
             "AutoModelForVisualQuestionAnswering",
             "AutoModelWithLMHead",
+            "AutoModelForZeroShotObjectDetection",
         ]
     )
     _import_structure["models.bart"].extend(
@@ -993,6 +1003,7 @@ else:
             "BloomPreTrainedModel",
             "BloomForSequenceClassification",
             "BloomForTokenClassification",
+            "BloomForQuestionAnswering",
         ]
     )
     _import_structure["models.blenderbot"].extend(
@@ -1023,6 +1034,7 @@ else:
             "CamembertForSequenceClassification",
             "CamembertForTokenClassification",
             "CamembertModel",
+            "CamembertPreTrainedModel",
         ]
     )
     _import_structure["models.canine"].extend(
@@ -1649,6 +1661,7 @@ else:
             "OPTModel",
             "OPTPreTrainedModel",
             "OPTForSequenceClassification",
+            "OPTForQuestionAnswering",
         ]
     )
     _import_structure["models.owlvit"].extend(
@@ -1859,6 +1872,14 @@ else:
             "Speech2TextForConditionalGeneration",
             "Speech2TextModel",
             "Speech2TextPreTrainedModel",
+        ]
+    )
+    _import_structure["models.whisper"].extend(
+        [
+            "WHISPER_PRETRAINED_MODEL_ARCHIVE_LIST",
+            "WhisperForConditionalGeneration",
+            "WhisperModel",
+            "WhisperPreTrainedModel",
         ]
     )
     _import_structure["models.speech_to_text_2"].extend(["Speech2Text2ForCausalLM", "Speech2Text2PreTrainedModel"])
@@ -2294,6 +2315,7 @@ else:
             "TFCamembertForSequenceClassification",
             "TFCamembertForTokenClassification",
             "TFCamembertModel",
+            "TFCamembertPreTrainedModel",
         ]
     )
     _import_structure["models.clip"].extend(
@@ -2730,6 +2752,14 @@ else:
             "TFWav2Vec2ForCTC",
             "TFWav2Vec2Model",
             "TFWav2Vec2PreTrainedModel",
+        ]
+    )
+    _import_structure["models.whisper"].extend(
+        [
+            "TF_WHISPER_PRETRAINED_MODEL_ARCHIVE_LIST",
+            "TFWhisperForConditionalGeneration",
+            "TFWhisperModel",
+            "TFWhisperPreTrainedModel",
         ]
     )
     _import_structure["models.xglm"].extend(
@@ -3337,6 +3367,13 @@ if TYPE_CHECKING:
     from .models.wav2vec2_phoneme import Wav2Vec2PhonemeCTCTokenizer
     from .models.wav2vec2_with_lm import Wav2Vec2ProcessorWithLM
     from .models.wavlm import WAVLM_PRETRAINED_CONFIG_ARCHIVE_MAP, WavLMConfig
+    from .models.whisper import (
+        WHISPER_PRETRAINED_CONFIG_ARCHIVE_MAP,
+        WhisperConfig,
+        WhisperFeatureExtractor,
+        WhisperProcessor,
+        WhisperTokenizer,
+    )
     from .models.x_clip import (
         XCLIP_PRETRAINED_CONFIG_ARCHIVE_MAP,
         XCLIPConfig,
@@ -3383,6 +3420,7 @@ if TYPE_CHECKING:
         VisualQuestionAnsweringPipeline,
         ZeroShotClassificationPipeline,
         ZeroShotImageClassificationPipeline,
+        ZeroShotObjectDetectionPipeline,
         pipeline,
     )
     from .processing_utils import ProcessorMixin
@@ -3748,6 +3786,7 @@ if TYPE_CHECKING:
             MODEL_FOR_VIDEO_CLASSIFICATION_MAPPING,
             MODEL_FOR_VISION_2_SEQ_MAPPING,
             MODEL_FOR_VISUAL_QUESTION_ANSWERING_MAPPING,
+            MODEL_FOR_ZERO_SHOT_OBJECT_DETECTION_MAPPING,
             MODEL_MAPPING,
             MODEL_WITH_LM_HEAD_MAPPING,
             AutoModel,
@@ -3776,6 +3815,7 @@ if TYPE_CHECKING:
             AutoModelForVideoClassification,
             AutoModelForVision2Seq,
             AutoModelForVisualQuestionAnswering,
+            AutoModelForZeroShotObjectDetection,
             AutoModelWithLMHead,
         )
         from .models.bart import (
@@ -3857,6 +3897,7 @@ if TYPE_CHECKING:
         from .models.bloom import (
             BLOOM_PRETRAINED_MODEL_ARCHIVE_LIST,
             BloomForCausalLM,
+            BloomForQuestionAnswering,
             BloomForSequenceClassification,
             BloomForTokenClassification,
             BloomModel,
@@ -3871,6 +3912,7 @@ if TYPE_CHECKING:
             CamembertForSequenceClassification,
             CamembertForTokenClassification,
             CamembertModel,
+            CamembertPreTrainedModel,
         )
         from .models.canine import (
             CANINE_PRETRAINED_MODEL_ARCHIVE_LIST,
@@ -4375,6 +4417,7 @@ if TYPE_CHECKING:
         from .models.opt import (
             OPT_PRETRAINED_MODEL_ARCHIVE_LIST,
             OPTForCausalLM,
+            OPTForQuestionAnswering,
             OPTForSequenceClassification,
             OPTModel,
             OPTPreTrainedModel,
@@ -4720,6 +4763,12 @@ if TYPE_CHECKING:
             WavLMModel,
             WavLMPreTrainedModel,
         )
+        from .models.whisper import (
+            WHISPER_PRETRAINED_MODEL_ARCHIVE_LIST,
+            WhisperForConditionalGeneration,
+            WhisperModel,
+            WhisperPreTrainedModel,
+        )
         from .models.x_clip import (
             XCLIP_PRETRAINED_MODEL_ARCHIVE_LIST,
             XCLIPModel,
@@ -4943,6 +4992,7 @@ if TYPE_CHECKING:
             TFCamembertForSequenceClassification,
             TFCamembertForTokenClassification,
             TFCamembertModel,
+            TFCamembertPreTrainedModel,
         )
         from .models.clip import (
             TF_CLIP_PRETRAINED_MODEL_ARCHIVE_LIST,
@@ -5260,6 +5310,12 @@ if TYPE_CHECKING:
             TFWav2Vec2ForCTC,
             TFWav2Vec2Model,
             TFWav2Vec2PreTrainedModel,
+        )
+        from .models.whisper import (
+            TF_WHISPER_PRETRAINED_MODEL_ARCHIVE_LIST,
+            TFWhisperForConditionalGeneration,
+            TFWhisperModel,
+            TFWhisperPreTrainedModel,
         )
         from .models.xglm import (
             TF_XGLM_PRETRAINED_MODEL_ARCHIVE_LIST,
